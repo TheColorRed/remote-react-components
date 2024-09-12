@@ -1,0 +1,17 @@
+[
+  {
+    "name": "@ecp/console/shapes",
+    "version": "1.0.0",
+    "endpoint": "http://localhost:3000/console/shapes.js"
+  },
+  {
+    "name": "@ecp/console/welcome",
+    "version": "1.0.0",
+    "endpoint": "http://localhost:3000/console/welcome.js"
+  },
+  {
+    "name": "@ecp/prism",
+    "version": "1.0.0",
+    "endpoint": "http://localhost:3000/prism/app.js"
+  }
+]
