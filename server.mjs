@@ -1,3 +1,4 @@
+import compress from 'compression';
 import cors from 'cors';
 import express from 'express';
 import fs from 'fs/promises';
@@ -5,7 +6,7 @@ import path from 'path';
 
 const app = express();
 
-app.use(cors());
+app.use(cors(), compress());
 
 const getSources = async () => (await import('./sources.json', { assert: { type: 'json' } })).default;
 
@@ -40,6 +41,12 @@ app.get('/find', async (req, res) => {
   } else {
     res.json(source);
   }
+});
+
+app.get('/react', async (req, res) => {
+  fs.readFile('./node_modules/react/cjs/react.production.min.js', 'utf-8').then(contents => {
+    res.header({ 'Content-Type': 'application/javascript' }).send(contents);
+  });
 });
 
 app.get('*', async (req, res) => {

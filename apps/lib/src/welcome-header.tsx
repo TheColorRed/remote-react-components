@@ -1,24 +1,36 @@
-// const { useState } = React;
+import { createWidget } from '@ecp/rtc/remote';
+import { useEffect, useState } from 'react';
 
-import { useState } from 'react';
+const welcomeMessages = [
+  'Welcome Back',
+  'Hello',
+  'Hi',
+  'Howdy',
+  'Greetings',
+  'Good Day',
+  'Good Morning',
+  'Good Afternoon',
+  'Good Evening',
+  'Good Night',
+  'Welcome',
+];
+const getRandomMessage = () => welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
 
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import r2wc from 'react-to-webcomponent';
+export const WelcomeHeader = createWidget(({ name }: { name: string }) => {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const [message] = useState(() => getRandomMessage());
 
-export const WelcomeHeader = (props: { name: string }) => {
-  const [name, setName] = useState(props.name ?? '');
-  // const name = props.name ?? '';
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+  }, []);
+
   return (
     <div>
-      <h2 className="text-2xl">Welcome Back, {name}</h2>
+      <h2 className="text-2xl">
+        {message} {name}, Your current time is {time}
+      </h2>
     </div>
   );
-};
-
-// export const WelcomeHeader = customElements.define(
-//   'welcome-header',
-//   r2wc(Welcome, React, ReactDOM, {
-//     props: ['name'],
-//   })
-// );
+});

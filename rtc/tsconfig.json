@@ -1,8 +1,4 @@
 {
   "extends": "../tsconfig.base.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "module": "nodenext"
-  },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

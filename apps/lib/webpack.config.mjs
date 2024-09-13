@@ -18,20 +18,20 @@ export default {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+  devtool: false,
   output: {
     path: path.resolve(__dirname, '../../dist/console'),
-    filename: 'shapes.js',
+    filename: 'common.js',
     library: {
-      // name: 'shapes',
       type: 'module',
+    },
+  },
+  resolve: {
+    alias: {
+      '@ecp/rtc': path.resolve(__dirname, '../../src'),
     },
   },
   experiments: {
     outputModule: true,
   },
-  // externals: [/^react.*$/],
-  // externals: {
-  //   react: 'react',
-  //   'react-dom': 'reactDOM',
-  // },
 };

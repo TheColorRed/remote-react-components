@@ -6,24 +6,21 @@ import baseConfig from '../../vite.config';
 const opts = defineConfig({
   plugins: [react()],
   define: {
-    'process.env.NODE_ENV': JSON.stringify('development'),
+    'process.env.NODE_ENV': JSON.stringify('production'),
   },
   build: {
+    minify: 'terser',
     ...baseConfig.build,
-    minify: false,
     target: 'esnext',
-    outDir: path.resolve(__dirname, '../../dist/console'),
+    outDir: path.resolve(__dirname, '../../dist/common'),
     emptyOutDir: true,
     lib: {
       ...baseConfig.build.lib,
       formats: ['es'],
       entry: {
-        welcome: path.resolve(__dirname, 'src/welcome-header.tsx'),
+        common: path.resolve(__dirname, 'src/index.tsx'),
         shapes: path.resolve(__dirname, 'src/shapes/index.tsx'),
       },
-    },
-    rollupOptions: {
-      // external: ['react', 'react-dom', 'jsx-runtime'],
     },
   },
 });

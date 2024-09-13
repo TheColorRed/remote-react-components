@@ -1,10 +1,9 @@
 {
   "name": "@ecp/rtc",
   "version": "0.0.0",
+  "type": "module",
   "exports": {
-    "./runtime": "./src/components/runtime-loader.jsx",
-    "./widget": "./src/components/widget-loader.jsx",
-    "./location": "./src/hooks/location.js",
-    "./dynamic-loader": "./src/hooks/dynamic-loader.js"
+    "./client": "./src/client.js",
+    "./remote": "./src/remote.js"
   }
 }
