@@ -53,11 +53,7 @@ export function useRemoteLoader(endpoint: string): DefaultModule {
     // If the endpoint is empty, return
     if (endpoint.trim().length === 0) return;
     // Load the module from the endpoint
-    import(endpoint).then(m => {
-      console.log(m);
-      setModule(m);
-    });
-    // import(endpoint).then(setModule);
+    import(endpoint).then(setModule);
   }, []);
 
   return module;
