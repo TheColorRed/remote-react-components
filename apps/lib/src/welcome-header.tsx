@@ -16,7 +16,7 @@ const welcomeMessages = [
 ];
 const getRandomMessage = () => welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
 
-export const WelcomeHeader = createWidget(({ name }: { name: string }) => {
+export const WelcomeHeader = createWidget(({ name, children }: { name: string; children: React.ReactNode }) => {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [message] = useState(() => getRandomMessage());
 
@@ -29,7 +29,7 @@ export const WelcomeHeader = createWidget(({ name }: { name: string }) => {
   return (
     <div>
       <h2 className="text-2xl">
-        {message} {name}, Your current time is {time}
+        {message} {name}, Your current time is {time} {children}
       </h2>
     </div>
   );

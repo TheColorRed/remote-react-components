@@ -59,7 +59,7 @@ export const Widget = ({
 }: {
   widget: RemoteWidget;
   props: { [key: string]: any };
-  children?: JSX.Element;
+  children?: React.ReactNode | React.ReactNode[];
 }) => {
   const [uuid] = useState(() => crypto.randomUUID());
   const ref = useRef<HTMLDivElement>(null);
@@ -74,7 +74,7 @@ export const Widget = ({
   // If the props change, we need to re-render the widget but not append it to the DOM
   useEffect(() => {
     if (!widget) return;
-    widget.renderer.render(widget.react.createElement(widget.component, props));
+    widget.renderer.render(widget.react.createElement(widget.component, props, children));
   }, [props]);
 
   return <div ref={ref} id={uuid}></div>;
