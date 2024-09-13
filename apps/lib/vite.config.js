@@ -9,9 +9,9 @@ const opts = defineConfig({
     'process.env.NODE_ENV': JSON.stringify('production'),
   },
   build: {
-    minify: 'terser',
     ...baseConfig.build,
     target: 'esnext',
+    minify: 'terser',
     outDir: path.resolve(__dirname, '../../dist/common'),
     emptyOutDir: true,
     lib: {

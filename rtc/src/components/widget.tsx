@@ -58,7 +58,7 @@ export const Widget = ({
   children,
 }: {
   widget: RemoteWidget;
-  props: { [key: string]: any };
+  props?: { [key: string]: any };
   children?: React.ReactNode | React.ReactNode[];
 }) => {
   const [uuid] = useState(() => crypto.randomUUID());
