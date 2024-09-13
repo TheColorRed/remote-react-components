@@ -67,14 +67,16 @@ export const Widget = ({
   // If the widget changes, we need to re-render the new widget and append it to the DOM
   useEffect(() => {
     if (!widget || !ref.current) return;
-    widget.renderer.render(widget.react.createElement(widget.component, props, children));
+    children = Array.isArray(children) ? children : [children];
+    widget.renderer.render(widget.react.createElement(widget.component, props, ...children));
     if (ref.current.children.length === 0) ref.current.appendChild(widget.domElement);
   }, [widget]);
 
   // If the props change, we need to re-render the widget but not append it to the DOM
   useEffect(() => {
     if (!widget) return;
-    widget.renderer.render(widget.react.createElement(widget.component, props, children));
+    children = Array.isArray(children) ? children : [children];
+    widget.renderer.render(widget.react.createElement(widget.component, props, ...children));
   }, [props]);
 
   return <div ref={ref} id={uuid}></div>;
