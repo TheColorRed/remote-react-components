@@ -22,8 +22,7 @@ export default () => {
       <div className="flex flex-1 shrink-0 p-4 gap-4">
         <main className="flex place-content-center place-items-center gap-2">
           <Widget widget={Box} props={{ size: 24, color: 'red' }} />
-          {/* <Widget widget={WelcomeHeader} props={{ name: name }} /> */}
-          {WelcomeHeader && <WelcomeHeader name={name} />}
+          <Widget widget={WelcomeHeader} props={{ name: name }} />
           <Widget widget={Circle} props={{ radius: 12, color: 'blue' }} />
         </main>
       </div>
