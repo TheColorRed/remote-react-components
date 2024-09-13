@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-export type DefaultModule = { [key: string]: RemoteWidget };
+export type DefaultModule = { [key: string]: RemoteWidget } | ((...args: any[]) => JSX.Element);
 
 /**
  * Loads a module from a remote source using a URL.\

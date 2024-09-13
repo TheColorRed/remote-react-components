@@ -29,11 +29,32 @@ import ReactDOM from 'react-dom/client';
  * // Create the local component
  * export default _Box;
  */
-export const createWidget = (
-  // react: typeof React,
-  // reactDOM: typeof ReactDOM,
-  component: (...args: any[]) => JSX.Element
-) => {
+export const createWidget2 = (component: (...args: any[]) => JSX.Element) => {
+  const div = document.createElement('div');
+  const root = ReactDOM.createRoot(div);
+  return (props: { [key: string]: any }) => {
+    const [uuid] = React.useState(() => crypto.randomUUID());
+    const ref = React.useRef<HTMLDivElement>(null);
+
+    // If the widget changes, we need to re-render the new widget and append it to the DOM
+    React.useEffect(() => {
+      if (!ref.current) return;
+      const children = Array.isArray(props.children) ? props.children : [props.children];
+      root.render(React.createElement(component, props, ...children));
+      if (ref.current.children.length === 0) ref.current.appendChild(div);
+    }, []);
+
+    // If the props change, we need to re-render the widget but not append it to the DOM
+    React.useEffect(() => {
+      const children = Array.isArray(props.children) ? props.children : [props.children];
+      root.render(React.createElement(component, props, ...children));
+    }, [props]);
+
+    return <div ref={ref} id={uuid} />;
+  };
+};
+
+export const createWidget = (component: (...args: any[]) => JSX.Element) => {
   const div = document.createElement('div');
   const root = ReactDOM.createRoot(div);
 

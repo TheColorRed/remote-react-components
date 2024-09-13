@@ -79,5 +79,5 @@ export const Widget = ({
     widget.renderer.render(widget.react.createElement(widget.component, props, ...children));
   }, [props]);
 
-  return <div ref={ref} id={uuid}></div>;
+  return <div ref={ref} id={uuid} />;
 };

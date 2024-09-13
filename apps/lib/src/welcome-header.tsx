@@ -1,4 +1,4 @@
-import { createWidget } from '@ecp/rtc/remote';
+import { createWidget2 } from '@ecp/rtc/remote';
 import { useEffect, useState } from 'react';
 
 const welcomeMessages = [
@@ -16,7 +16,7 @@ const welcomeMessages = [
 ];
 const getRandomMessage = () => welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
 
-export const WelcomeHeader = createWidget(({ name, children }: { name: string; children: React.ReactNode }) => {
+export const WelcomeHeader = createWidget2(({ name, children }: { name: string; children: React.ReactNode }) => {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [message] = useState(() => getRandomMessage());
 
